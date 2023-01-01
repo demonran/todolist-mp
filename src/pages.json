@@ -12,8 +12,34 @@
 			"style": {
 				"navigationBarTitleText": "打卡"
 			}
-		}
+		}, {
+		    "path": "pages/todolist/index",
+		    "style": {
+		        "navigationBarTitleText": "任务"
+		    }
+		},{
+            "path": "pages/login/index"
+        }
 	],
+	"tabBar" : {
+	    "color": "#7A7E83",
+        "selectedColor": "#3cc51f",
+        "borderStyle": "black",
+        "backgroundColor": "#ffffff",
+        "height": "50px",
+        "fontSize": "10px",
+        "iconWidth": "24px",
+        "spacing": "3px",
+        "list": [{
+            "pagePath": "pages/index/index",
+            "text": "打卡"
+        },{
+        "pagePath": "pages/todolist/index",
+                    "text": "任务"
+        }
+        ]
+	},
+
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
 		"navigationBarTitleText": "uni-app",

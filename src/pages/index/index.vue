@@ -1,5 +1,9 @@
 <template>
-	<view >
+	<view>
+    <view class="title">
+      <text>{{name}} 今日打卡 {{new Date().toLocaleDateString()}}</text>
+    </view>
+
     <task v-for="item in todolist" :task="item"  @click="taskDone(item)"></task>
 <!--		<uni-list>-->
 <!--      <uni-list-item v-for="item in todolist" :title="item.title"  note="列表禁用状态" clickable @click="taskDone(item)" :class="item.done ? 'done': ''">-->
@@ -9,19 +13,23 @@
 </template>
 
 <script>
-import { dailyTasks, doneDailyTask } from '../../api/todolist.js'
+import { dailyTasks, doneDailyTask } from '../../api/dailytask.js'
 import Task from '../../components/task.vue'
+import {getUserInfo} from "../../api/auth.js";
 	export default {
     components: {Task},
 		data() {
 			return {
-				title: 'Hello',
+				name: getUserInfo().name,
         todolist: []
 			}
 		},
 		onLoad() {
-      this.initData()
+
 		},
+    onShow() {
+      this.initData()
+    },
     onShareAppMessage() {
       return {
         title: '每日打卡', //分享的名称
@@ -30,7 +38,7 @@ import Task from '../../components/task.vue'
     },
 		methods: {
       initData() {
-        dailyTasks().then(res => this.todolist = res.data)
+        dailyTasks().then(res => this.todolist = res)
       },
       getClass(item) {
         return item.done ? 'done': ''
@@ -58,6 +66,7 @@ import Task from '../../components/task.vue'
 	}
 
 	.title {
+    text-align: center;
 		font-size: 36rpx;
 		color: #8f8f94;
 	}
