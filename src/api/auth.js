@@ -1,4 +1,5 @@
 import request from "../utils/request.js";
+import store from "../store/index.js";
 
 const TokenKey = 'TOKEN'
 const UserInfo = "USER_INFO"
@@ -36,6 +37,7 @@ export function getToken() {
 }
 
 export function setUserInfo(user) {
+    store.commit('Login', user)
     uni.setStorageSync(UserInfo, user)
 }
 

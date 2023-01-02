@@ -17,7 +17,12 @@
 		    "style": {
 		        "navigationBarTitleText": "任务"
 		    }
-		}
+		},{
+          "path": "pages/share/index",
+          "style": {
+                "navigationBarTitleText": "快来看看我的打卡"
+            }
+          }
 	],
 	"tabBar" : {
 	    "color": "#7A7E83",
