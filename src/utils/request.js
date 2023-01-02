@@ -1,8 +1,11 @@
 import axios from "axios-miniprogram";
-import {getToken, login, setToken, setUserInfo} from "../api/auth.js";
+import {refreshToken, getToken, login, setToken, setUserInfo} from "../api/auth.js";
+
+let isRefreshToken = false
+let requests = []
 
 const service = axios.create({
-    baseURL: getBaseURL() ,
+    baseURL: getBaseURL(),
 })
 
 function getBaseURL() {
@@ -31,18 +34,28 @@ service.interceptors.request.use(
 
 service.interceptors.response.use(
     response => {
+        console.log('response', response.data)
         return response.data
-        console.log('response,',response)
-    },error => {
+    }, error => {
         const code = error.response.data.status
-        if (code) {
-            if (code === 401) {
-                debugger
-                uni.navigateTo({url: '/pages/login/index'})
+        if (code === 401) {
+            const config = error.config;
+            if (!isRefreshToken) {
+                isRefreshToken = true
+                return refreshToken().then(() => {
+                    requests.forEach(cb => cb())
+                    return service(config)
+                }).catch(err => Promise.reject(err))
+                    .finally(() => isRefreshToken = false)
+            } else {
+                return new Promise(resolve => {
+                    requests.push(() => resolve(service(config)))
+                })
             }
-        } else {
-            console.log('接口请求失败')
         }
+        console.log('接口请求失败', error)
+        return Promise.reject(error)
+
 
     })
 

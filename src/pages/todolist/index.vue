@@ -1,6 +1,6 @@
 <template>
   <uni-list>
-    <uni-list-item v-for="item in list" :title="item.title"></uni-list-item>
+    <uni-list-item v-for="item in list" :key="item.id" :title="item.title"></uni-list-item>
   </uni-list>
 </template>
 

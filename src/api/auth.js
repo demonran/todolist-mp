@@ -11,6 +11,22 @@ export function login(code) {
     })
 }
 
+export function refreshToken() {
+    return new Promise((resolve, reject) => {
+        uni.login({
+            provider: 'weixin', //使用微信登录
+            success: function (res) {
+                login(res.code).then(res => {
+                    setToken(res.token)
+                    setUserInfo(res.user)
+                    resolve(res)
+                })
+            }
+        })
+    })
+
+}
+
 export function setToken(token) {
     uni.setStorageSync(TokenKey, token)
 }
