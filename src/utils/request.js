@@ -13,7 +13,8 @@ function getBaseURL() {
     let envVersion = wx.getAccountInfoSync().miniProgram.envVersion;
     switch (envVersion) {
         case "develop": // 开发版
-            baseUrl = "http://localhost:8080"; //测试环境
+            // baseUrl = "http://localhost:8080"; //测试环境
+            baseUrl = "https://nes.sit.yumimiao.cn"; //测试环境
             break;
         case "trial": // 体验版
             baseUrl = "https://nes.sit.yumimiao.cn"; //测试环境
@@ -28,15 +29,20 @@ service.interceptors.request.use(
     config => {
         config.headers['Content-Type'] = 'application/json'
         config.headers['Authorization'] = 'Bearer ' + getToken()
+        uni.showLoading({
+            title: '加载中'
+        })
         return config
     }, error => Promise.reject(error)
 )
 
 service.interceptors.response.use(
     response => {
+        uni.hideLoading()
         console.log('response', response.data)
         return response.data
     }, error => {
+        uni.hideLoading()
         const code = error.response.data.status
         if (code === 401) {
             const config = error.config;

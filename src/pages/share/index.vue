@@ -1,5 +1,12 @@
 <template>
-  <task v-for="item in todolist" :task="item" :key="item.id"></task>
+  <view>
+
+    <view class="title">
+      <text>{{user.name}}</text>
+    </view>
+    <task v-for="item in todolist" :task="item" :key="item.id"></task>
+  </view>
+
 </template>
 
 <script>
@@ -11,7 +18,8 @@ export default {
   components: {Task},
   data() {
     return {
-      todolist: []
+      todolist: [],
+      user: {}
     }
   },
   onLoad(option) {
@@ -20,12 +28,18 @@ export default {
   },
   methods: {
     initData(openId) {
-      dailyTasksByUserId({openId}).then(res => this.todolist = res)
+      dailyTasksByUserId({openId}).then(res => {
+        this.todolist = res.dailyTasks
+        this.user = res.user;
+      })
     }
   }
 }
 </script>
 
 <style scoped>
-
+.title {
+  text-align: center;
+  font-size: 30rpx;
+}
 </style>
