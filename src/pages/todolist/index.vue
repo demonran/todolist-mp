@@ -1,14 +1,16 @@
 <template>
   <uni-list>
     <uni-list-item v-for="item in list" :key="item.id" :title="item.title"></uni-list-item>
+    <TodoItem></TodoItem>
   </uni-list>
 </template>
 
 <script>
 import {listTodolist} from "../../api/todolist.js";
-
+import TodoItem from "./todo-item.vue";
 export default {
   name: "index",
+  components: {TodoItem},
   data() {
     return {
       list: []
