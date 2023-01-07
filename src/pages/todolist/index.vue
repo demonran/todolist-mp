@@ -1,8 +1,8 @@
 <template>
-  <uni-list>
-    <uni-list-item v-for="item in list" :key="item.id" :title="item.title"></uni-list-item>
-    <TodoItem></TodoItem>
-  </uni-list>
+  <view>
+    <TodoItem v-for="item in list" :key="item.id" :item="item"></TodoItem>
+    <uni-fab ref="fab" horizontal="right" @trigger="trigger" :content="content"/>
+  </view>
 </template>
 
 <script>
@@ -13,15 +13,29 @@ export default {
   components: {TodoItem},
   data() {
     return {
-      list: []
+      list: [],
+      content: [
+        {
+          text: '添加任务',
+          active: false
+        },
+      ]
+
     }
   },
-  onLoad() {
+  onShow() {
     this.initData()
   },
   methods: {
     initData() {
       listTodolist().then(res => this.list = res)
+    },
+    trigger(e) {
+      if (e.index == 0) {
+        uni.navigateTo({
+          url: "/pages/todolist/add"
+        })
+      }
     }
   }
 }

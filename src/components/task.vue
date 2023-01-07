@@ -1,12 +1,10 @@
 <template>
-  <view class="task-box" :class="task.done? 'done': ''" @click="doClick">
-    <view>{{ task.title }}</view>
-    <view>
-      <text style="padding-right: 10rpx">{{ task.done ? '已完成' : '未开始' }}</text>
-      <uni-icons v-if="task.done" type="checkmarkempty" color="#4cd964" size="20"></uni-icons>
-      <uni-icons v-if="!task.done" type="circle"  size="20"></uni-icons>
+  <view class="task-box"  @click="doClick">
+    <view class="task-box-content">
+        <text class="task-box-content-title">{{ task.title }}</text>
+        <text class="task-box-content-subtitle">副标题</text>
     </view>
-    <!--    <view>{{task.date}}</view>-->
+    <view class="task-box-checkbox" :class="task.done? 'check_active': ''"></view>
   </view>
 </template>
 
@@ -30,18 +28,61 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .task-box {
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
-  padding: 20rpx 0;
-  font-size: 25rpx;
-  border: solid 0.5rpx #e5e5e5;
-}
+  justify-content: space-between;
+  align-items: center;
+  padding: 20rpx 20rpx;
+  margin: 20rpx 20rpx;
+  border-radius: 20rpx;
+  background-color: #414faf;
+  color: #ffffff;
+  box-shadow: 0rpx 10rpx 0rpx 0rpx rgba(46, 51, 149);
 
-.done {
-  color: #4cd964;
+  .task-box-content {
+    display: flex;
+    flex-direction: column;
+
+    .task-box-content-title {
+      font-size: 35rpx;
+    }
+    .task-box-content-subtitle {
+      font-size: 20rpx;
+    }
+  }
+
+  .task-box-checkbox {
+    width: 40px;
+    height: 40px;
+    background-color: #ffffff;
+    position: relative;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    transition: background-color 0.25s;
+
+
+  }
+  .check_active{
+    background: palevioletred;
+    border-color: palevioletred;
+  }
+
+  .check_active:after{
+    content: '';
+    display: block;
+    width: 30rpx;
+    height: 20rpx;
+    border: 6rpx solid #fff;
+    border-width: 0 0 6rpx 6rpx;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -16rpx;
+    margin-left: -16rpx;
+    transform: rotate(-45deg);
+  }
 }
 
 </style>

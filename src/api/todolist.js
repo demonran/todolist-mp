@@ -4,3 +4,10 @@ export function listTodolist() {
     return request.get('/api/todolist/todolist')
 }
 
+export function addTodolist(data) {
+    return request({
+        url: '/api/todolist/todolist',
+        method: "post",
+        data
+    })
+}
