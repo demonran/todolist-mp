@@ -54,8 +54,8 @@ export default {
   }
 
   .task-box-checkbox {
-    width: 40px;
-    height: 40px;
+    width: 40rpx;
+    height: 40rpx;
     background-color: #ffffff;
     position: relative;
     border: 1px solid #ddd;

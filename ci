@@ -4,7 +4,7 @@ function build {
   yarn build:mp-weixin
 }
 function deploy {
-  miniprogram-ci  upload  --pp ./dist/build/mp-weixin   --pkp private.wx4d922add64bcdc16.key   --appid wx4d922add64bcdc16  --uv 1.0.1   -r 1     --enable-es6 true
+  miniprogram-ci  upload  --pp ./dist/build/mp-weixin   --pkp private.wx4d922add64bcdc16.key   --appid wx4d922add64bcdc16  --uv 1.0.1   -r 1     --enable-es7 true
 }
 
 while [ $# -gt 0 ]; do

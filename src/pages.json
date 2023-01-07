@@ -31,7 +31,13 @@
             "style": {
                   "navigationBarTitleText": "添加任务"
               }
-            }
+            },
+             {
+                "path": "pages/tools/index",
+                "style": {
+                      "navigationBarTitleText": "外部链接"
+                  }
+                }
 	],
 	"tabBar" : {
 	    "color": "#7A7E83",
