@@ -1,12 +1,12 @@
 <template>
   <view>
-    <TodoItem v-for="item in list" :key="item.id" :item="item"></TodoItem>
+    <TodoItem v-for="item in list" :key="item.id" :item="item" @change="changeStatus"></TodoItem>
     <uni-fab ref="fab" horizontal="right" @trigger="trigger" :content="content"/>
   </view>
 </template>
 
 <script>
-import {listTodolist} from "../../api/todolist.js";
+import {changeTodolistStatus, listTodolist} from "../../api/todolist.js";
 import TodoItem from "./todo-item.vue";
 export default {
   name: "index",
@@ -34,8 +34,11 @@ export default {
     initData() {
       listTodolist().then(res => this.list = res)
     },
+    changeStatus(id, status) {
+      changeTodolistStatus({id: id, status: status}).then(res => console.log(res))
+    },
     trigger(e) {
-      if (e.index == 0) {
+      if (e.index === 0) {
         uni.navigateTo({
           url: "/pages/todolist/add"
         })

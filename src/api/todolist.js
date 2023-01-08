@@ -11,3 +11,11 @@ export function addTodolist(data) {
         data
     })
 }
+
+export function changeTodolistStatus(data) {
+    return request({
+        url: '/api/todolist/todolist/status',
+        method: "put",
+        data
+    })
+}

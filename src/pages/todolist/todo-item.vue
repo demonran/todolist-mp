@@ -41,10 +41,13 @@
       </view>
       <view class="body-action">
         <view class="body-action-status">
-          <text class="status">项目进行中</text>
+          <text class="status">{{statusDesc}}</text>
           <text class="date">Since {{ item.createdAt }}</text>
         </view>
-        <switch :checked="item.status === 1" style="transform:scale(0.7)"/>
+        <switch
+            @change="changeStatus"
+            :checked="checked"
+            style="transform:scale(0.7)"/>
       </view>
     </view>
 
@@ -54,12 +57,27 @@
 </template>
 
 <script>
+
 export default {
   name: "todolist",
   props: ['item'],
   data() {
-    return {}
+    return {
+      checked: this.item.status === 1
+    }
   },
+  computed: {
+    statusDesc() {
+      return this.checked ? '任务进行中' : '任务暂停'
+    },
+  },
+  methods: {
+    changeStatus(e) {
+      this.checked = e.detail.value
+      this.$emit("change", this.item.id, this.checked ? 1: 0)
+    },
+
+  }
 }
 </script>
 
