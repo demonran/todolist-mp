@@ -32,7 +32,7 @@ export default {
   },
   methods: {
     initData() {
-      listTodolist().then(res => this.list = res)
+      listTodolist().then(res => this.list = res.sort((a, b) => a.status - b.status))
     },
     changeStatus(id, status) {
       changeTodolistStatus({id: id, status: status}).then(res => console.log(res))
