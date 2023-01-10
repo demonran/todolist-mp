@@ -1,7 +1,7 @@
 <template>
 	<view>
     <view class="title">
-      <text>{{name}} 今日打卡 {{today}}</text>
+      <uni-countdown class="uni-countdown1" :show-day="false" :font-size="30"  :hour="hour" :minute="minute" :second="second" color="#FFFFFF" background-color="#007AFF" />
     </view>
 
     <task v-for="item in todolist" :task="item" :key="item.id"  @click="taskDone(item)"></task>
@@ -20,14 +20,17 @@ import {mapState} from 'vuex'
 		data() {
 			return {
         todolist: [],
-        today: moment().format("YYYY-MM-DD")
+        hour: 23 - moment().hour(),
+        minute: 59 - moment().minute(),
+        second: 60 - moment().seconds()
 			}
 		},
 		onLoad() {
-
-		},
-    onShow() {
       this.initData()
+		},
+
+    onPullDownRefresh() {
+      this.initData().then(() => uni.stopPullDownRefresh())
     },
     onShareAppMessage() {
       return {
@@ -43,7 +46,7 @@ import {mapState} from 'vuex'
     },
 		methods: {
       initData() {
-        dailyTasks().then(res => {
+        return dailyTasks().then(res => {
           this.todolist = res
           console.log(getUserInfo())
         })
@@ -73,8 +76,15 @@ import {mapState} from 'vuex'
 		justify-content: center;
 	}
 
+  .uni-countdown1 {
+    justify-content: center;
+  }
+
 	.title {
-    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 		font-size: 36rpx;
 		color: #8f8f94;
 	}

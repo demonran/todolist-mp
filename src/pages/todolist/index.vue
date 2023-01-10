@@ -1,7 +1,7 @@
 <template>
   <view>
     <TodoItem v-for="item in list" :key="item.id" :item="item" @change="changeStatus"></TodoItem>
-    <uni-fab ref="fab" horizontal="right" @trigger="trigger" :content="content"/>
+    <uni-fab ref="fab" horizontal="left" @trigger="trigger" :content="content"/>
   </view>
 </template>
 
@@ -30,6 +30,7 @@ export default {
   onShow() {
     this.initData()
   },
+
   methods: {
     initData() {
       listTodolist().then(res => this.list = res.sort((a, b) => b.status - a.status))

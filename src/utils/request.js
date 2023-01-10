@@ -59,6 +59,11 @@ service.interceptors.response.use(
                 })
             }
         }
+        uni.showToast({
+            title: '服务异常，请下拉刷新',
+            icon: 'none',
+            duration: 2000
+        });
         console.log('接口请求失败', error)
         return Promise.reject(error)
 
