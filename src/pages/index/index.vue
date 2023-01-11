@@ -35,7 +35,7 @@ import {mapState} from 'vuex'
     onShareAppMessage() {
       return {
         title: '快来看看我的打卡吧', //分享的名称
-        path: `/pages/share/index?openId=${getUserInfo().wxOpenId}`,
+        path: `/pages/share/index?userId=${getUserInfo().id}`,
       }
     },
     computed: {

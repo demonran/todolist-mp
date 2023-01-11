@@ -23,12 +23,12 @@ export default {
     }
   },
   onLoad(option) {
-    const openId = option.openId;
-    this.initData(openId)
+    const userId = option.userId;
+    this.initData(userId)
   },
   methods: {
-    initData(openId) {
-      dailyTasksByUserId({openId}).then(res => {
+    initData(userId) {
+      dailyTasksByUserId({userId}).then(res => {
         this.todolist = res.dailyTasks
         this.user = res.user;
       })
