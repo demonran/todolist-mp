@@ -10,7 +10,7 @@
       </uni-tr>
       <!-- 表格数据行 -->
       <uni-tr  v-for="item in scoreRecords" :key="item">
-        <uni-td>{{ item.createdAt }}</uni-td>
+        <uni-td>{{ item.createdAt| formatDate }}</uni-td>
         <uni-td>{{ item.event }}</uni-td>
         <uni-td>{{ item.score }}</uni-td>
       </uni-tr>
@@ -21,6 +21,7 @@
 
 <script>
 import {listScoreRecord} from "@/api/score-record";
+import moment from "moment";
 
 export default {
   name: "index",
@@ -33,7 +34,11 @@ export default {
   onShow() {
     this.list()
   },
-
+  filters: {
+    formatDate(val) {
+      return moment(val).format('YYYY-MM-DD')
+    },
+  },
   methods: {
     list() {
       listScoreRecord().then(res => {

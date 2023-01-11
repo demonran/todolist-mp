@@ -44,6 +44,12 @@
       "style": {
         "navigationBarTitleText": "记分卡"
       }
+    },
+    {
+      "path": "pages/backlog/index",
+      "style": {
+        "navigationBarTitleText": "待办"
+      }
     }
   ],
   "tabBar": {
@@ -63,6 +69,10 @@
       {
         "pagePath": "pages/score-card/index",
         "text": "记分卡"
+      },
+      {
+        "pagePath": "pages/backlog/index",
+        "text": "待办"
       }
     ]
   },

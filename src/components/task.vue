@@ -39,7 +39,7 @@ export default {
   border-radius: 20rpx;
   background-color: #414faf;
   color: #ffffff;
-  box-shadow: 0rpx 10rpx 0rpx 0rpx rgba(46, 51, 149);
+  box-shadow: 0 10rpx 0 0 rgba(46, 51, 149);
 
   .task-box-content {
     display: flex;
