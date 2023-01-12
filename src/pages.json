@@ -36,7 +36,7 @@
     {
       "path": "pages/tools/index",
       "style": {
-        "navigationBarTitleText": "外部链接"
+        "navigationBarTitleText": "工具"
       }
     },
     {
@@ -49,6 +49,12 @@
       "path": "pages/backlog/index",
       "style": {
         "navigationBarTitleText": "待办"
+      }
+    },
+    {
+      "path": "pages/tools/mobile-use/index",
+      "style": {
+        "navigationBarTitleText": "使用手机"
       }
     }
   ],
@@ -71,8 +77,8 @@
         "text": "记分卡"
       },
       {
-        "pagePath": "pages/backlog/index",
-        "text": "待办"
+        "pagePath": "pages/tools/index",
+        "text": "工具"
       }
     ]
   },

@@ -13,8 +13,8 @@ function getBaseURL() {
     let envVersion = wx.getAccountInfoSync().miniProgram.envVersion;
     switch (envVersion) {
         case "develop": // 开发版
-            baseUrl = "http://localhost:8080"; //测试环境
-            // baseUrl = "https://nes.sit.yumimiao.cn"; //测试环境
+            // baseUrl = "http://localhost:8080"; //测试环境
+            baseUrl = "https://nes.sit.yumimiao.cn"; //测试环境
             break;
         case "trial": // 体验版
             baseUrl = "https://nes.sit.yumimiao.cn"; //测试环境
