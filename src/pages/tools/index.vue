@@ -1,9 +1,9 @@
 <template>
   <uni-section title="常用工具" type="line" padding>
-    <uni-grid :column="4" showBorder="false" :highlight="true">
+    <uni-grid :column="2" :showBorder="false" :highlight="true">
       <uni-grid-item v-for="(item, index) in data" :index="index" :key="index" @click.native="goto(item.page)">
         <view class="grid-item-box" style="background-color: #fff;">
-          <uni-icons type="image" :size="30" color="#777" />
+          <uni-icons :type="item.icon" :size="30" color="#777" />
           <text class="text">{{ item.title }}</text>
         </view>
       </uni-grid-item>
@@ -17,8 +17,8 @@ export default {
   data() {
     return {
       data: [
-        {title: '使用手机', page: '/pages/tools/mobile-use/index'},
-        {title: '待办', page: '/pages/backlog/index'},
+        {title: '使用手机', icon: 'wallet', page: '/pages/tools/mobile-use/index'},
+        {title: '待办', icon: 'calendar-filled', page: '/pages/backlog/index'},
       ]
     }
   },

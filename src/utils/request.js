@@ -8,7 +8,7 @@ const service = axios.create({
     baseURL: getBaseURL(),
 })
 
-function getBaseURL() {
+export function getBaseURL() {
     let baseUrl;
     let envVersion = wx.getAccountInfoSync().miniProgram.envVersion;
     switch (envVersion) {
@@ -20,7 +20,7 @@ function getBaseURL() {
             baseUrl = "https://nes.sit.yumimiao.cn"; //测试环境
             break;
         case "release": // 正式版
-            baseUrl = "https://nes.sit.yumimiao.cn"; //正式环境
+            baseUrl = "https://nes.uat.yumimiao.cn"; //正式环境
     }
     return baseUrl
 }

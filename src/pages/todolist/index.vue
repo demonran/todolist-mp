@@ -18,11 +18,7 @@ export default {
         {
           text: '添加任务',
           active: false
-        },
-        {
-          text: '工具',
-          active: false
-        },
+        }
       ]
 
     }
@@ -43,11 +39,8 @@ export default {
         uni.navigateTo({
           url: "/pages/todolist/add"
         })
-      }else if(e.index === 1) {
-        uni.redirectTo({
-          url: "/pages/tools/index"
-        })
       }
+
     }
   }
 }
