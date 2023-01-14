@@ -21,6 +21,7 @@ export function getBaseURL() {
             break;
         case "release": // 正式版
             baseUrl = "https://nes.uat.yumimiao.cn"; //正式环境
+            break;
     }
     return baseUrl
 }
