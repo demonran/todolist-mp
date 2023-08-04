@@ -17,7 +17,7 @@ export default {
   data() {
     return {
       data: [
-        {title: '使用手机', icon: 'wallet', page: '/pages/tools/mobile-use/index'},
+        {title: '使用手机', icon: 'wallet', page: '/pages/mobile-use/index'},
         {title: '待办', icon: 'calendar-filled', page: '/pages/backlog/index'},
       ]
     }

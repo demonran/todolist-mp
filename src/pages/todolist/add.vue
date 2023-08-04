@@ -1,9 +1,19 @@
 <template>
     <view>
       <uni-forms ref="valiForm">
-        <uni-forms-item label="标题" required>
-          <uni-easyinput v-model="form.title" placeholder="请输入标题" />
+        <uni-forms-item required>
+          <uni-easyinput v-model="form.title" placeholder="输入你想坚持的事情" />
         </uni-forms-item>
+        <uni-data-select
+            :localdata="timePlan"
+        ></uni-data-select>
+        <uni-data-picker placeholder="请选择班级" popup-title="请选择所在地区" :localdata="timePlan"
+                        >
+        </uni-data-picker>
+
+        <picker  :range="timePlan">
+          <view class="uni-input">sdafasd</view>
+        </picker>
       </uni-forms>
       <button type="primary" @click="submit('valiForm')">提交</button>
     </view>
@@ -16,7 +26,12 @@ export default {
 
   data() {
     return {
-      form: {}
+      form: {},
+      timePlan: [
+        { text: '每天', value: 'EVERYDAY'},
+        { text: '每周', value: 'WEEKLY'},
+        { text: '每周x天', value: 'DAYS_IN_WEEK'}
+      ].map(item => item.text)
     }
   },
   methods: {

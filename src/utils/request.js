@@ -14,10 +14,10 @@ export function getBaseURL() {
     switch (envVersion) {
         case "develop": // 开发版
             // baseUrl = "http://localhost:8080"; //测试环境
-            baseUrl = "https://nes.sit.yumimiao.cn"; //测试环境
+            baseUrl = "https://lura-gateway-server.sit.yumimiao.cn/todolist/"; //测试环境
             break;
         case "trial": // 体验版
-            baseUrl = "https://nes.sit.yumimiao.cn"; //测试环境
+            baseUrl = "https://lura-gateway-server.sit.yumimiao.cn/todolist/"; //测试环境
             break;
         case "release": // 正式版
             baseUrl = "https://nes.uat.yumimiao.cn"; //正式环境

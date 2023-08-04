@@ -52,7 +52,7 @@
       }
     },
     {
-      "path": "pages/tools/mobile-use/index",
+      "path": "pages/mobile-use/index",
       "style": {
         "navigationBarTitleText": "使用手机"
       }
